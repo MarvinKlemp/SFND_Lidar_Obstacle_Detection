@@ -52,16 +52,17 @@ struct KdTree
             }
 
             // check if target +/- distance is bigger of smaller than the splitting point
-            if (target[xy % 2] + distanceTol >= node->point[xy % 2]) {
-                if (node->right != nullptr) {
-                    queue.push(node->right);
-                }
-            }
             if (target[xy % 2] - distanceTol <= node->point[xy % 2]) {
                 if (node->left != nullptr) {
                     queue.push(node->left);
                 }
             }
+            if (target[xy % 2] + distanceTol >= node->point[xy % 2]) {
+                if (node->right != nullptr) {
+                    queue.push(node->right);
+                }
+            }
+
 
             xy += 1;
             queue.pop();
